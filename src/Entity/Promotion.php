@@ -27,11 +27,11 @@ class Promotion
 
     #[ORM\OneToMany(mappedBy: 'promotion', targetEntity: Product::class)]
     private Collection $products;
-
-    public function __toString()
+    public function convertStringToInt($remise)
     {
-        return $this->remise;
+        return (int)$remise;
     }
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
