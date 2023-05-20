@@ -16,8 +16,8 @@ class Promotion
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $remise = null;
+    #[ORM\Column(length: 255)]
+    private ?string $remise = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_debut = null;
@@ -27,11 +27,11 @@ class Promotion
 
     #[ORM\OneToMany(mappedBy: 'promotion', targetEntity: Product::class)]
     private Collection $products;
-    public function convertStringToInt($remise)
-    {
-        return (int)$remise;
-    }
 
+    public function __toString()
+    {
+        return $this->remise;
+    }
     public function __construct()
     {
         $this->products = new ArrayCollection();
