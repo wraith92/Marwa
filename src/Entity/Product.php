@@ -35,6 +35,14 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $categorie = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $remise = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE , nullable: true)]
+    private ?\DateTimeInterface $date_debut = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE , nullable: true)]
+    private ?\DateTimeInterface $date_fn = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Promotion $promotion = null;
@@ -80,7 +88,7 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice($price): self
     {
         $this->price = $price;
 
@@ -111,6 +119,43 @@ class Product
             $this->updated_at = new \DateTimeImmutable();
         }
     }
+
+    public function getRemise(): ?int
+    {
+        return $this->remise;
+    }
+
+    public function setRemise(int $remise): self
+    {
+        $this->remise = $remise;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->date_debut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $date_debut): self
+    {
+        $this->date_debut = $date_debut;
+
+        return $this;
+    }
+
+    public function getDateFn(): ?\DateTimeInterface
+    {
+        return $this->date_fn;
+    }
+
+    public function setDateFn(\DateTimeInterface $date_fn): self
+    {
+        $this->date_fn = $date_fn;
+
+        return $this;
+    }
+
 
 
     public function getCategorie(): ?Category

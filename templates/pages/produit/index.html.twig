@@ -39,17 +39,17 @@
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item">{{ produit.price * 0.01 }}
 									€</li>
-								{% if produit.promotion%}
-								{% set dateDebut = produit.promotion.getDateDebut() %}
-								{% set dateFin = produit.promotion.getDateFn() %}
+								{% if produit.remise%}
+								{% set dateDebut = produit.getDateDebut() %}
+								{% set dateFin = produit.getDateFn() %}
 								{% set dateActuelle = date() %}
 								{% endif %}
 
-								{% if produit.promotion and dateActuelle >= dateDebut and dateActuelle <= dateFin %}
-									<li class="list-group-item">{{ produit.promotion }}
+								{% if produit.remise and dateActuelle >= dateDebut and dateActuelle <= dateFin %}
+									<li class="list-group-item">{{ produit.remise }}
 										% de remise
 									</li>
-									{% set prixApresPromotion = (produit.price * 0.01) * (1 - (produit.promotion.remise / 100)) %}
+									{% set prixApresPromotion = (produit.price * 0.01) * (1 - (produit.remise / 100)) %}
 									<li class="list-group-item text-danger">Prix après promotion:
 										{{ prixApresPromotion|number_format(2, '.', ',') }}
 										€</li>
@@ -65,7 +65,7 @@
 
 								{% endif %}
 
-								{% if produit.promotion %}{% endif %}
+
 							</ul>
 
 						</div>
