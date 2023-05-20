@@ -6,7 +6,6 @@ use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -30,7 +29,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('imageFile')->setFormType(VichImageType::class),
             ImageField::new('image')->setBasePath('/uploads/images')->onlyOnIndex(),
             IntegerField::new('remise'),
-            DateTimeField::new('date_debut'),
+            TextField::new('date_debut'),
             AssociationField::new('categorie'),
             AssociationField::new('promotion'),
         ];
