@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Date;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -28,8 +29,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('description'),
             TextField::new('imageFile')->setFormType(VichImageType::class),
             ImageField::new('image')->setBasePath('/uploads/images')->onlyOnIndex(),
-            IntegerField::new('remise'),
-            TextField::new('date_debut'),
+            DateField::new('date_debut', 'Date Début'),
             AssociationField::new('categorie'),
             AssociationField::new('promotion'),
         ];
