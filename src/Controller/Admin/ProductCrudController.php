@@ -28,7 +28,9 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('description'),
             TextField::new('imageFile')->setFormType(VichImageType::class),
             ImageField::new('image')->setBasePath('/uploads/images')->onlyOnIndex(),
-
+            IntegerField::new('remise'),
+            DateField::new('date_debut'),
+            DateField::new('date_fn'),
             AssociationField::new('categorie'),
             AssociationField::new('promotion'),
         ];
