@@ -44,8 +44,6 @@ class Product
     #[ORM\Column(type: Types::DATE_MUTABLE , nullable: true)]
     private ?\DateTimeInterface $date_fn = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?Promotion $promotion = null;
 
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE , nullable: true)]
@@ -54,6 +52,8 @@ class Product
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updated_at = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Promotion $promotion = null;
     public function getId(): ?int
     {
         return $this->id;
