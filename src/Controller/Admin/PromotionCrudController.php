@@ -20,9 +20,7 @@ class PromotionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IntegerField::new('remise')->formatValue(function ($value) {
-                return $value !== null ? $value . '%' : null;
-            }),
+            IntegerField::new('remise'),
             DateField::new('date_debut'),
             DateField::new('date_fn'),
         ];
