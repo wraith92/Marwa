@@ -35,15 +35,17 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $categorie = null;
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column( nullable: true)]
     private ?int $remise = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE , nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_debut = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE , nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fn = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Promotion $promotion = null;
 
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE , nullable: true)]
@@ -52,8 +54,6 @@ class Product
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updated_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?Promotion $promotion = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -88,7 +88,7 @@ class Product
         return $this->price;
     }
 
-    public function setPrice($price): self
+    public function setPrice(string $price): self
     {
         $this->price = $price;
 
@@ -120,7 +120,7 @@ class Product
         }
     }
 
-    public function getRemise(): ?int
+      public function getRemise(): ?int
     {
         return $this->remise;
     }
