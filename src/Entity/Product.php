@@ -44,8 +44,6 @@ class Product
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fn = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?Promotion $promotion = null;
 
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE , nullable: true)]
@@ -166,18 +164,6 @@ class Product
     public function setCategorie(?Category $categorie): self
     {
         $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    public function getPromotion(): ?Promotion
-    {
-        return $this->promotion;
-    }
-
-    public function setPromotion(?Promotion $promotion): self
-    {
-        $this->promotion = $promotion;
 
         return $this;
     }
