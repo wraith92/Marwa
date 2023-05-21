@@ -135,7 +135,7 @@ class Product
         return $this->date_debut;
     }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): self
+    public function setDateDebut(?\DateTimeInterface $date_debut): self
     {
         $this->date_debut = $date_debut;
 
@@ -147,7 +147,7 @@ class Product
         return $this->date_fn;
     }
 
-    public function setDateFn(\DateTimeInterface $date_fn): self
+    public function setDateFn(?\DateTimeInterface $date_fn): self
     {
         $this->date_fn = $date_fn;
 
