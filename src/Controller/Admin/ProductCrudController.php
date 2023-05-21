@@ -24,15 +24,16 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-
             IdField::new('libelle'),
+            AssociationField::new('categorie'),
             MoneyField::new('price')->setCurrency('EUR'),
             TextField::new('description'),
             TextField::new('imageFile')->setFormType(VichImageType::class),
             ImageField::new('image')->setBasePath('/uploads/images')->onlyOnIndex(),
             IntegerField::new('remise'),
-            DateField::new('date_debut', 'Date Début'),
-            DateField::new('date_fn', 'Date Début'),
+            DateField::new('date_debut'),
+            DateField::new('date_fn'),
+
 
         ];
     }
