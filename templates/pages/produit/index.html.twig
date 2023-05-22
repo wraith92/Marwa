@@ -7,16 +7,25 @@
 
 	<h1 class="display-4">Nos Produits</h1>
 	<div class="container">
-
 		<form action="{{ path('app_produit') }}" method="get">
-			<label for="category">Categorie:</label>
-			<select id="category" name="category">
-				<option value="">All</option>
-				{% for category in categories %}
-					<option value="{{ category.id }}">{{ category.libelle }}</option>
-				{% endfor %}
-			</select>
-			<button type="submit">Filter</button>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-6">
+						<select class="form-select" id="category" name="category">
+							<option value="">Toutes les Catégories</option>
+							{% for category in categories %}
+								<option value="{{ category.id }}">{{ category.libelle }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-3">
+						<button type="submit" class="btn btn-primary mb-2">Filter</button>
+					</div>
+				</div>
+
+			</div>
+
+
 		</form>
 
 		<hr>
@@ -32,7 +41,6 @@
 								<h5 class="card-title">{{ produit.categorie }}</h5>
 							</div>
 							<img class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" alt="Product Image" src="{{ asset('uploads/images/' ~ produit.image) }}">
-
 							<div class="card-body">
 								<p class="card-text">{{ produit.description }}.</p>
 							</div>
@@ -40,9 +48,9 @@
 								<li class="list-group-item">{{ produit.price * 0.01 }}
 									€</li>
 								{% if produit.remise%}
-								{% set dateDebut = produit.getDateDebut() %}
-								{% set dateFin = produit.getDateFn() %}
-								{% set dateActuelle = date() %}
+									{% set dateDebut = produit.getDateDebut() %}
+									{% set dateFin = produit.getDateFn() %}
+									{% set dateActuelle = date() %}
 								{% endif %}
 
 								{% if produit.remise and dateActuelle >= dateDebut and dateActuelle <= dateFin %}
